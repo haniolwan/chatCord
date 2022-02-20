@@ -1,0 +1,29 @@
+{
+  "name": "chatCord",
+  "version": "1.0.0",
+  "description": "Chat service for programmers",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HaniOlwan/chatCord.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HaniOlwan/chatCord/issues"
+  },
+  "homepage": "https://github.com/HaniOlwan/chatCord#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.3",
+    "moment": "^2.29.1",
+    "socket.io": "^4.4.1"
+  }
+}
