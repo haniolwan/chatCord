@@ -8,6 +8,14 @@ socket.on('message', (message) => {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
+// Get username from URL
+socket.emit(
+  'username',
+  Qs.parse(location.search, {
+    ignoreQueryPrefix: true,
+  })
+);
+
 chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
   // Get message from input
@@ -24,8 +32,8 @@ chatForm.addEventListener('submit', (e) => {
 function outputMessage(message) {
   const div = document.createElement('div');
   div.classList.add('message');
-  div.innerHTML = `<p class="meta">Brad <span>9:12pm</span></p>
+  div.innerHTML = `<p class="meta">${message.username}<span>${message.time}</span></p>
   <p class="text">
-  ${message}</p>`;
+  ${message.text}</p>`;
   document.querySelector('.chat-messages').appendChild(div);
 }
