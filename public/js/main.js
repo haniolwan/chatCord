@@ -1,18 +1,24 @@
 const socket = io();
 const chatForm = document.querySelector('#chat-form');
+const chatMessages = document.querySelector('.chat-messages');
 
 socket.on('message', (message) => {
   console.log(message);
   outputMessage(message);
+  chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
 chatForm.addEventListener('submit', (e) => {
   e.preventDefault();
+  // Get message from input
   const msg = e.target.elements.msg.value;
 
+  // Send message to Server
   socket.emit('chatMessage', msg);
 
-  e.target.elements.focus();
+  // clear Message Input
+  e.target.elements.msg.value = '';
+  e.target.elements.msg.focus();
 });
 
 function outputMessage(message) {
